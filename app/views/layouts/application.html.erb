@@ -13,7 +13,13 @@
       <li><%= link_to "Home", welcome_index_path %></li>
       <li><%= link_to "About", welcome_about_path %></li>
       <li><%= link_to "Contact Us", welcome_contact_path %></li>
+      <% if current_user %>
+        <li><%= link_to "Sign out", destroy_user_session_path, method: :delete %></li>
+      <% else %>
+        <li><%= link_to "Sign In", new_user_session_path %></li>
+      <% end %>
    </ul>
+   <h1>TIMLY</h1>
  </div>
 
      <% if flash[:notice] %>
@@ -32,8 +38,6 @@
          <%= flash[:alert] %>
        </div>
      <% end %>
-
-<%= yield %>
-
+  <%= yield %>
 </body>
 </html>
