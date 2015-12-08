@@ -1,9 +1,12 @@
 class BusinessesController < ApplicationController
   def index
+    @businesses = Business.all
+    authorize @businesses
   end
 
   def show
     @business = Business.find(params[:id])
+    authorize @business
   end
 
   def new
@@ -13,6 +16,7 @@ class BusinessesController < ApplicationController
   def create
     @business = current_user.businesses.build(business_params)
     @business.user = current_user
+    authorize @business
     if @business.save
       flash[:notice] = "Business created!"
       redirect_to @business

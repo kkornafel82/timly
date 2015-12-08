@@ -11,6 +11,9 @@
  <div class="header_background">
    <div class="container">
      <ul class="nav nav-pills pull-right" style="text-shadow: black 0.1em 0.1em 0.2em;text-color: black;">
+      <% if current_user %>
+        <li><%= link_to "Profile", edit_user_registration_path %>
+      <% end %>
         <li><%= link_to "Home", root_path %></li>
         <li><%= link_to "About", about_path %></li>
         <li><%= link_to "Contact Us", contact_path %></li>

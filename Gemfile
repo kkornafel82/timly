@@ -26,6 +26,8 @@ gem 'coffee-rails', '~> 4.1.0'
 # gem 'therubyracer', platforms: :ruby
 # Devise for Authentication
 gem 'devise'
+# Pundit for Authorization
+gem 'pundit'
 # Figaro for environment variables
 gem 'figaro', '1.0'
 #Simple Calendar for Calendar Views
