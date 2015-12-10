@@ -1,15 +1,37 @@
+<div style="padding-left: 20px">
 <h2>Hello! We are <%= @business.name %></h2>
 <p><%= @business.trade %></p>
+</div>
 
 <div class="row>">
   <!-- <div class="col-md-2"></div> -->
   
-  <div class="col-md-8 col-md-offset-2" style="padding-top: 100px;">
+  <div class="col-md-8" style="padding-top: 100px;">
   <%= month_calendar do |date| %>
     <% date.strftime('%d') %>
+    <% @appointments.each do |appointment| %>
+      <% if appointment.start_time.strftime('%d') == date.strftime('%d') %>
+      <%= appointment.start_time.strftime('%I') - appointment.end_time.strftime('%I') %>
+      <% end %>
+    <% end %>
   <% end %>
   </div>
 </div>
+
+<div class="col-md-4" style="padding-top: 100px;">
+  <%= render partial: 'appointments/form', locals: {appointment: @appointment}  %>
+</div>
+
+</div>
+<div class="row">
+  <div class ="col-md-6">
+    <% @appointments.each do |appointment| %>
+    <%= appointment.start_time %> <br>
+    <%= appointment.end_time %> <br><br>
+    <% end %>
+  </div>
+</div>
+
 
 
 

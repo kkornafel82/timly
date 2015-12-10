@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   
 
-  resources :businesses
+  resources :businesses do
+   resources :appointments, only: [:create, :destroy]
+  end
 
   get 'users/show'
 

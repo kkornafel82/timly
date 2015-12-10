@@ -6,11 +6,14 @@ class BusinessesController < ApplicationController
 
   def show
     @business = Business.find(params[:id])
+    @appointment = Appointment.new
+    @appointments = Appointment.all
     authorize @business
   end
 
   def new
     @business = Business.new
+    @appointment = Appointment.new
   end
 
   def create
