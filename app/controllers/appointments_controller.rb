@@ -10,8 +10,8 @@ class AppointmentsController < ApplicationController
   end
 
   def create
-    @appointment = Appointment.new(appointment_params)
     @business = Business.find(params[:business_id])
+    @appointment = Appointment.new(appointment_params)
     if @appointment.save
       flash[:notice] = "Appointment created!"
       redirect_to @business

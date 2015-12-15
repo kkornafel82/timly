@@ -8,11 +8,11 @@
   
   <div class="col-md-8" style="padding-top: 100px;">
   <%= month_calendar do |date| %>
-    <% date.strftime('%d') %>
+    <%= date.strftime('%d') %><br>
     <% @appointments.each do |appointment| %>
-      <% if appointment.start_time.strftime('%d') == date.strftime('%d') %>
-      <%= appointment.start_time.strftime('%I') - appointment.end_time.strftime('%I') %>
-      <% end %>
+        <% if date.strftime('%d') == appointment.start_time.strftime('%d') %>
+        <p><%= appointment.start_time.strftime('%l:%M')%>-<%= appointment.end_time.strftime('%l:%M') %></p><br>
+        <% end %>
     <% end %>
   <% end %>
   </div>
@@ -26,8 +26,8 @@
 <div class="row">
   <div class ="col-md-6">
     <% @appointments.each do |appointment| %>
-    <%= appointment.start_time %> <br>
-    <%= appointment.end_time %> <br><br>
+    <%= appointment.start_time.to_formatted_s(:long) %> <br>
+    <%= appointment.end_time.to_formatted_s(:long) %> <br><br>
     <% end %>
   </div>
 </div>
