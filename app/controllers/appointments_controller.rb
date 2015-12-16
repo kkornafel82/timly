@@ -13,12 +13,27 @@ class AppointmentsController < ApplicationController
     @business = Business.find(params[:business_id])
     @appointment = Appointment.new(appointment_params)
     if @appointment.save
+      @appointment.update_attributes(:business_id => @business.id, :available => true)
       flash[:notice] = "Appointment created!"
       redirect_to @business
     else
       flash[:error] = "There was an error saving the appointment. Please try again."
     end
   end
+
+  def make_unavailable
+    @appointment = Appointment.find(params[:id])
+    @business = @appointment.business
+    @appointment.update_attributes(:available => false, :user_id => current_user.id)
+  end
+
+  def make_available
+    @appointment = Appointment.find(params[:id])
+    @business = @appointment.business
+    @appointment.update_attributes(:available => true, :user_id => nil)
+  end
+
+
 
   private
 
