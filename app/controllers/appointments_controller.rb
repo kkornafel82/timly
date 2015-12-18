@@ -22,7 +22,7 @@ class AppointmentsController < ApplicationController
   end
 
   def make_unavailable
-    @appointment = Appointment.find(params[:id])
+    @appointment = Appointment.find(params[:appointment_id])
     @business = @appointment.business
     @appointment.update_attributes(:available => false, :user_id => current_user.id)
   end

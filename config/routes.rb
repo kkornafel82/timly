@@ -2,7 +2,10 @@ Rails.application.routes.draw do
   
 
   resources :businesses do
-   resources :appointments only: (:create, :destroy)
+   resources :appointments, only: [:create, :destroy]
+
+   post '/make_unavailable' => 'appointments#make_unavailable'
+   
   end
 
   get 'users/show'
