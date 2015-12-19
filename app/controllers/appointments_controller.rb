@@ -11,7 +11,7 @@ class AppointmentsController < ApplicationController
 
   def create
     @business = Business.find(params[:business_id])
-    @appointment = Appointment.new(appointment_params)
+    @appointment = Appointment.create(appointment_params)
     if @appointment.save
       @appointment.update_attributes(:business_id => @business.id, :available => true)
       flash[:notice] = "Appointment created!"
@@ -22,17 +22,10 @@ class AppointmentsController < ApplicationController
   end
 
   def make_unavailable
-    @appointment = Appointment.find(params[:appointment_id])
-    @business = @appointment.business
+    @appointment = Appointment.find_by_id(params[:id])
+    @business = Business.find_by_id(params[:business_id])
     @appointment.update_attributes(:available => false, :user_id => current_user.id)
   end
-
-  def make_available
-    @appointment = Appointment.find(params[:id])
-    @business = @appointment.business
-    @appointment.update_attributes(:available => true, :user_id => nil)
-  end
-
 
 
   private

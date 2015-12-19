@@ -11,7 +11,7 @@
     <%= date.strftime('%d') %><br>
     <% @appointments.each do |appointment| %>
         <% if date.strftime('%d') == appointment.start_time.strftime('%d') %>
-        <p><%= link_to "appointment.start_time.strftime('%l:%M')%>-<%= appointment.end_time.strftime('%l:%M')", business_make_unavailable_path(@business, @appointment), :method => :post %></p><br>
+        <p><%= link_to appointment.start_time.strftime('%l:%M'), business_make_unavailable_path, :method => :post %></p><br>
         <% end %>
     <% end %>
   <% end %>
@@ -27,7 +27,7 @@
   <div class ="col-md-6">
     <% @appointments.each do |appointment| %>
     <%= appointment.start_time.to_formatted_s(:long) %> <br>
-    <%= appointment.end_time.to_formatted_s(:long) %> <br><br>
+    <%= appointment.id %> <br><br>
     <% end %>
   </div>
 </div>
