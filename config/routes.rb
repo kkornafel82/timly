@@ -1,13 +1,15 @@
 Rails.application.routes.draw do
   
+  root to: 'welcome#index'
 
   resources :businesses do
-   resources :appointments, only: [:create, :destroy] do
+  
+  resources :appointments, only: [:create, :destroy] do
+    post '/make_unavailable' => 'appointments#make_unavailable'
+  end 
+end
 
-   post '/make_unavailable' => 'appointments#make_unavailable'
- end
-   
-  end
+  patch '/make_unavailable' => 'appointments#make_unavailable'
 
   get 'users/show'
 
@@ -17,6 +19,6 @@ Rails.application.routes.draw do
 
   get 'contact' => 'welcome#contact'
 
-  root to: 'welcome#index'
+ 
 
 end
