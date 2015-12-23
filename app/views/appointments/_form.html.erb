@@ -1,0 +1,11 @@
+<h4>Add an appointment:</h4>
+   <%= form_for [@business, @appointment] do |f| %>
+   <div class="form-group">
+    Start Time: <%= f.text_field :start_time, class: 'form-control', placeholder: '(ie YEAR/MONTH/DAY 9:00PM)' %><br>
+    End Time: <%= f.text_field :end_time, class: 'form-control', placeholder: '(ie: YEAR/MONTH/DAY 10:00PM)' %><br>
+    <br>
+  </div>
+    <%= f.submit "Save", class: 'btn btn-success' %>
+   <% end %>
+
+

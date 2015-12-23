@@ -1,2 +1,12 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<div class="row">
+  <div class="col-md-6" style="padding-left: 100px;">
+    <h2>User Profile</h2><br>
+    <h5>Name: <%= current_user.name %></h5><br>
+    <h5> Email: <%= current_user.email %></h5><br>
+    <h5> Member Since: <%= current_user.created_at.to_date %></h5><br><br>
+    <h5> Businesses: </h5><br><br>
+    <% current_user.businesses.each do |business| %>
+    <%= business.name %> <br>
+    <% end %>
+  </div>
+</div>

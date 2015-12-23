@@ -1,18 +1,37 @@
+<div style="padding-left: 20px">
 <h2>Hello! We are <%= @business.name %></h2>
 <p><%= @business.trade %></p>
+</div>
 
 <div class="row>">
   <!-- <div class="col-md-2"></div> -->
   
-  <div class="col-md-8 col-md-offset-2" style="padding-top: 100px;">
+  <div class="col-md-8" style="padding-top: 100px;">
   <%= month_calendar do |date| %>
-    <% date.strftime('%d') %>
-    <% [1,3].sample.times do %>
-      <p>appt</p>
+    <%= date.strftime('%d') %><br>
+    <% @appointments.each do |appointment| %>
+        <% if date.strftime('%d') == appointment.start_time.strftime('%d') %>
+        <p><%= link_to appointment.start_time.strftime('%l:%M'), make_unavailable_business_appointment_path(@business, @appointment), :method => :put %></p><br>
+        <% end %>
     <% end %>
   <% end %>
   </div>
 </div>
+
+<div class="col-md-4" style="padding-top: 100px;">
+  <%= render partial: 'appointments/form', locals: {appointment: @appointment}  %>
+</div>
+
+</div>
+<div class="row">
+  <div class ="col-md-6">
+    <% @appointments.each do |appointment| %>
+    <%= appointment.start_time.to_formatted_s(:long) %> <br>
+    <%= appointment.id %> <br><br>
+    <% end %>
+  </div>
+</div>
+
 
 
 
