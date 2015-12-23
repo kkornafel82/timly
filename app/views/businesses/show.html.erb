@@ -11,7 +11,7 @@
     <%= date.strftime('%d') %><br>
     <% @appointments.each do |appointment| %>
         <% if date.strftime('%d') == appointment.start_time.strftime('%d') %>
-        <p><%= link_to appointment.start_time.strftime('%l:%M'), make_unavailable_business_appointment_path(@business, @appointment), :method => :put %></p><br>
+        <p><%= link_to appointment.start_time.strftime('%l:%M'), make_unavailable_path(@business, @appointment) %></p><br>
         <% end %>
     <% end %>
   <% end %>

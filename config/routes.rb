@@ -5,11 +5,7 @@ Rails.application.routes.draw do
   resources :charges, only: [:new, :create]
 
   resources :businesses do
-  
   resources :appointments, only: [:create, :destroy] do
-    member do
-    put :make_unavailable
-    end
   end 
 end
 
@@ -20,6 +16,8 @@ end
 
   get 'downgrade' => 'users#downgrade'
 
+  get 'make_unavailable' => 'appointments#make_unavailable'
+  
   get 'about' => 'welcome#about'
 
   get 'contact' => 'welcome#contact'
