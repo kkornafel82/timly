@@ -30,6 +30,8 @@ gem 'coffee-rails', '~> 4.1.0'
 gem 'devise'
 # Pundit for Authorization
 gem 'pundit'
+# Stripe for Upgrading Accounts & Payments
+gem 'stripe'
 # Figaro for environment variables
 gem 'figaro', '1.0'
 #Simple Calendar for Calendar Views
