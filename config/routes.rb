@@ -5,7 +5,9 @@ Rails.application.routes.draw do
   resources :businesses do
   
   resources :appointments, only: [:create, :destroy] do
-    post '/make_unavailable' => 'appointments#make_unavailable'
+    member do
+    put :make_unavailable
+    end
   end 
 end
 

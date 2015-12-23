@@ -24,7 +24,7 @@ class AppointmentsController < ApplicationController
   def make_unavailable
     @appointment = Appointment.find_by_id(params[:id])
     @business = Business.find_by_id(params[:business_id])
-    @appointment.update_attributes(:available => false, :user_id => current_user.id)
+    @appointment.toggle!(:available)
     redirect_to businesses_path
   end
 
