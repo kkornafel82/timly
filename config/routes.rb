@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   
   root to: 'welcome#index'
 
+  resources :charges, only: [:new, :create]
+
   resources :businesses do
   
   resources :appointments, only: [:create, :destroy] do
@@ -11,11 +13,12 @@ Rails.application.routes.draw do
   end 
 end
 
-  patch '/make_unavailable' => 'appointments#make_unavailable'
 
   get 'users/show'
 
   devise_for :users
+
+  get 'downgrade' => 'users#downgrade'
 
   get 'about' => 'welcome#about'
 
