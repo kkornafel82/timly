@@ -22,10 +22,10 @@ class AppointmentsController < ApplicationController
   end
 
   def make_unavailable
-    @appointment = Appointment.find_by_id(params[:id])
+    @appointment = Appointment.find_by_id(params[:appointment_id])
     @business = Business.find_by_id(params[:business_id])
-    @appointment.update_attributes(:available => false)
-    redirect_to businesses_path
+    @appointment.update_attributes(available: false, user_id: current_user.id)
+    redirect_to @business, notice: "Appointment Scheduled"
   end
 
 
