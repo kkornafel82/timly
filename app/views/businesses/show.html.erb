@@ -10,7 +10,7 @@
   <%= month_calendar do |date| %>
     <%= date.strftime('%d') %><br>
     <% @appointments.each do |appointment| %>
-        <% if date.strftime('%d') == appointment.start_time.strftime('%d') %>
+        <% if date.strftime('%m') == appointment.start_time.strftime('%m') && date.strftime('%d') == appointment.start_time.strftime('%d') && @business.id == appointment.business_id && appointment.available == true %>
         <p><%= link_to appointment.start_time.strftime('%l:%M'), business_appointment_make_unavailable_path(@business, appointment), method: :put %></p><br>
         <% end %>
     <% end %>
@@ -25,10 +25,10 @@
 </div>
 <div class="row">
   <div class ="col-md-6">
-    <% @appointments.each do |appointment| %>
-    <%= appointment.start_time.to_formatted_s(:long) %> <br>
-    <%= appointment.id %> <br><br>
-    <% end %>
+    <%# @appointments.each do |appointment| %>
+    <%#= appointment.start_time.to_formatted_s(:long) %> <br>
+    <%#= appointment.id %> <br><br>
+    <%# end %>
   </div>
 </div>
 

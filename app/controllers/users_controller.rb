@@ -4,6 +4,10 @@ class UsersController < ApplicationController
     @user = current_user
   end
 
+  def edit
+    @businesses = Business.all
+  end
+
   def downgrade 
     current_user.update_attribute(:role, 'standard')
 
