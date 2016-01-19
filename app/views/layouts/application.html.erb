@@ -6,6 +6,8 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+    
+  <link href='https://fonts.googleapis.com/css?family=Ubuntu:700italic' rel='stylesheet' type='text/css'>
 </head>
 <body>
  <div class="header_background">
@@ -23,7 +25,7 @@
           <li><%= link_to "Sign In", new_user_session_path %></li>
         <% end %>
      </ul>
-     <h1>TIMLY</h1>
+     <h1 class="logo">TIMLY</h1>
    </div>
 </div>
 
